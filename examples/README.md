@@ -201,8 +201,9 @@ Rscript scripts/synthetic_bb_generator_with_DML.r [OPTIONS]
 ```
 
 Example Commands:
-**simulation with 100K CpGs, 5 samples per group, 10% DML, 20x coverage, effect size 0.2:**
+
 ```bash
+# Generate data with 100K CpGs, 5 samples per group, 10% DML, 20x coverage, effect size 0.2
 Rscript scripts/synthetic_bb_generator_with_DML.r \
   -K 3 \
   -n 100000 \
@@ -220,8 +221,8 @@ Rscript scripts/synthetic_bb_generator_with_DML.r \
 
 ```
 
-**Null simulation with no DML (Type I error evaluation):**
 ```bash
+# Null simulation with no DML (Type I error evaluation)
 Rscript scripts/synthetic_bb_generator_with_DML.r \
   -K 3 \
   -n 100000 \
@@ -233,17 +234,19 @@ Rscript scripts/synthetic_bb_generator_with_DML.r \
   -o synthetic_data/null_simulation.qs
 ```
 
-**Custom mixture proportions:**
 ```bash
+# Custom mixture proportions
 Rscript scripts/synthetic_bb_generator_with_DML.r \
   -K 3 \
   -n 100000 \
   -s 10 \
-  --mixing_props "0.2,0.5,0.3" \
   --dml_fraction 0.1 \
+  --effect_size 0.1 \
+  --mixing_props "0.2,0.5,0.3" \
+  -c 20 \
+  -f FALSE \
   -o synthetic_data/custom_mixture.qs
 ```
-
 
 The generator supports:
 - directly generating case–control methylation data
