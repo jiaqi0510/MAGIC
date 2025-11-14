@@ -191,6 +191,67 @@ component,alpha,beta,pi
 2,5.000,8.000,0.400
 3,15.000,2.000,0.300
 ```
+### Alternative: Creating Synthetic Data with true DML
+
+You can also generate synthetic test data with true DMLs:
+
+Basic Command:
+```bash
+Rscript scripts/synthetic_bb_generator_with_DML.r [OPTIONS]
+```
+
+Example Commands:
+**simulation with 100K CpGs, 5 samples per group, 10% DML, 20x coverage, effect size 0.2:**
+```bash
+Rscript scripts/synthetic_bb_generator_with_DML.r \
+  -K 3 \
+  -n 100000 \
+  -s 10 \
+  --dml_fraction 0.1 \
+  --effect_size 0.2 \
+  -c 20 \
+  -f FALSE \
+  -o synthetic_data/synthetic_bb_dml_100k_s10_d01_cov20.qs
+```
+# This creates:
+# - synthetic_data/synthetic_bb_dml_100k_s10_d01_cov20.qs (BSseq object)
+# - synthetic_data/synthetic_bb_dml_100k_s10_d01_cov20_trueModel.csv (true parameters)
+# - synthetic_data/synthetic_bb_dml_100k_s10_d01_cov20_truth_DML.csv (true DMLs)
+
+**Null simulation with no DML (Type I error evaluation):**
+```bash
+Rscript scripts/synthetic_bb_generator_with_DML.r \
+  -K 3 \
+  -n 100000 \
+  -s 20 \
+  --dml_fraction 0 \
+  --effect_size 0 \
+  -c 20 \
+  -f FALSE \
+  -o synthetic_data/null_simulation.qs
+```
+
+**Custom mixture proportions:**
+```bash
+Rscript scripts/synthetic_bb_generator_with_DML.r \
+  -K 3 \
+  -n 100000 \
+  -s 10 \
+  --mixing_props "0.2,0.5,0.3" \
+  --dml_fraction 0.1 \
+  -o synthetic_data/custom_mixture.qs
+```
+
+
+The generator supports:
+- directly generating case–control methylation data
+- flexibly specifying effect sizes and the proportion of DML sites
+- adjusting the mixture component weights
+
+### BSseq Format
+Same as above.
+### True Model Format (for comparisons)
+Same as above.
 
 ### Ground Truth DML Table (`_truth_DML.csv`)
 Example: `synthetic_bb_dml_100k_s10_d01_cov20_truth_DML.csv`
