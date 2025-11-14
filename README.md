@@ -135,6 +135,22 @@ Rscript scripts/generate_synthetic_data.R \
 
 This creates test data with known ground truth for validating the method.
 
+
+Directly generate case–control methylation data with known ground truth:
+
+```bash
+Rscript scripts/synthetic_bb_generator_with_DML.r \
+  -K 3 \
+  -n 100000 \
+  -s 10 \
+  --dml_fraction 0.1 \
+  --effect_size 0.2 \
+  -o synthetic_data/synthetic_bb_dml_100k_s10_d01_cov20.qs
+```
+
+This creates test data with known DMLs for model evluation.
+
+
 ### Model Comparison (for simulations)
 
 Compare fitted parameters to true values:
@@ -258,6 +274,7 @@ See the `examples/` directory for complete working examples:
 - **example_optimization.R** - Basic optimization workflow
 - **example_testing.R** - Differential methylation testing
 - **example_comparison.R** - Model comparison for simulations
+- **example_synthetic_with_DML.R** - Model comparison with true DMLs
 
 ## Method
 
