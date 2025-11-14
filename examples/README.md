@@ -107,6 +107,33 @@ Rscript examples/example_comparison.R
 - True model files: `simulations/*_trueModel.csv`
 - Fitted model directories: `results/*_K*_*/`
 
+### 4. example_synthetic_with_DML.R
+**Model Evaluation with True DML**
+
+Demonstrates:
+- Generate synthetic data with controlled DML injection
+- Fit MAGIC mixture model
+- Test for differential methylation
+- Visualize methylation distributions by component
+- Create ROC curves comparing methods
+- Validate Type I error control with QQ plots
+
+**Usage:**
+```bash
+Rscript examples/example_synthetic_with_DML.R
+```
+
+**Outputs:**
+- Synthetic BSseq data with ground truth DML labels
+- MAGIC differential methylation results
+- Methylation distribution plots by mixture component
+- ROC curves (MAGIC vs baseline methods)
+- QQ plot for null simulation validation
+- Performance metrics (sensitivity, precision, F1)
+
+This example is perfect for:
+- Benchmarking MAGIC performance
+
 ## Data Requirements
 
 ### Creating Synthetic Data
@@ -236,6 +263,22 @@ parameter_recovery.png     # Custom plots
 convergence_stability.png
 publication_figure.png     # High-res for papers
 publication_figure.pdf     # Vector format
+```
+
+### From example_synthetic_with_DML.R
+
+Creates:
+```
+synthetic_example/
+├── synthetic_bb_100k_s10_d01_cov10.qs              # synthetic data with true DMLs
+├── synthetic_bb_100k_s10_d01_cov10_truth_DML.csv   # true DMLs
+├── synthetic_bb_100k_s10_d01_cov10_trueModel.csv   # model parameters
+├── magic_results/
+│   └── magic_results.csv
+├── methylation_histogram_by_component.png          # visualization of methylation levels
+├── roc_curve_comparison.png
+├── null_simulation.qs                              # synthetic data with no DMLs
+└── qq_plot_null_simulation.png                     # evaluation of false positive control
 ```
 
 ## Customization
