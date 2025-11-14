@@ -193,7 +193,7 @@ component,alpha,beta,pi
 ```
 ### Alternative: Creating Synthetic Data with true DML
 
-You can also generate synthetic test data with true DMLs:
+You can also generate synthetic test data with true DMLs
 
 Basic Command:
 ```bash
@@ -212,11 +212,13 @@ Rscript scripts/synthetic_bb_generator_with_DML.r \
   -c 20 \
   -f FALSE \
   -o synthetic_data/synthetic_bb_dml_100k_s10_d01_cov20.qs
-```
+
 # This creates:
 # - synthetic_data/synthetic_bb_dml_100k_s10_d01_cov20.qs (BSseq object)
 # - synthetic_data/synthetic_bb_dml_100k_s10_d01_cov20_trueModel.csv (true parameters)
 # - synthetic_data/synthetic_bb_dml_100k_s10_d01_cov20_truth_DML.csv (true DMLs)
+
+```
 
 **Null simulation with no DML (Type I error evaluation):**
 ```bash
