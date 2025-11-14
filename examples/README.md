@@ -192,6 +192,23 @@ component,alpha,beta,pi
 3,15.000,2.000,0.300
 ```
 
+### Ground Truth DML Table (`_truth_DML.csv`)
+Example: `synthetic_bb_dml_100k_s10_d01_cov20_truth_DML.csv`
+
+CSV file containing ground truth information for all injected DML sites:
+
+- `CpG_ID`: Row index of the CpG site in the BSseq object
+- `chr`: Chromosome name 
+- `pos`: Genomic position 
+- `Effect`: Injected effect size 
+- `Direction`: Direction of methylation change (increase/decrease) 
+- `mean_meth_control`: Mean methylation level in Control group 
+- `mean_meth_treatment`: Mean methylation level in Treatment group 
+- `min_cov_control`: Minimum coverage across Control samples 
+- `min_cov_treatment`: Minimum coverage across Treatment samples 
+- `delta`: Observed methylation difference (|treatment - control|) 
+
+
 ## Running Examples
 
 ### Quick Start
